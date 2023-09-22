@@ -1,0 +1,78 @@
+﻿@{ SecondWeb.Models.Context db = new SecondWeb.Models.Context();
+    SecondWeb.Models.AboutUs aboutUs = db.AboutUs.FirstOrDefault();
+    SecondWeb.Models.TheTeam theTeam = db.TheTeam.FirstOrDefault();
+    System.Data.DataTable dt = SecondWeb.Models.Procs.TheTeams();
+    db.Dispose();
+ }
+<main>
+    <div class="heading">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <h1>About Us</h1>
+                    @if (aboutUs != null)
+                    {
+        <p>@aboutUs.Heading.</p>}
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="site-section">
+        <div class="container">
+            <div class="row justify-content-between mb-5">
+                <div class="col-lg-7 mb-5 mb-md-0 mb-lg-0">
+                    <img src="../../Assets/images/hero_1.jpg" alt="Image" class="img-fluid">
+                </div>
+                <div class="col-lg-4">
+                    <h3 class="mb-4 text-black">About Us</h3>
+                    @if (aboutUs != null)
+                    {
+                    <p>@aboutUs.Details</p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+   @*@for(int i = 0; i < dt.Rows.Count; i++)
+            {
+                
+            }*@
+    <div class="site-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 mb-5">
+                    <h3 class="mb-4 text-black">The Team</h3>
+                </div>
+                <div class="col-6 col-md-6 col-lg-4">
+                    <div class="testimonial">
+                        <img src="../../Assets/images/person_1.jpg" alt="Image" class="img-fluid">
+                        <div class="mb-3">
+                        </div>
+                        <blockquote>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus possimus, aut veniam. Ut minus, possimus quisquam cupiditate magnam nisi pariatur..</blockquote>
+                    </div>
+                </div>
+                <div class="col-6 col-md-6 col-lg-4">
+                    <div class="testimonial">
+                        <img src="../../Assets/images/person_2.jpg" alt="Image" class="img-fluid">
+                        <div class="mb-3">
+                            <h3>John Doe</h3>
+                            <span>Co-Founder</span>
+                        </div>
+                        <blockquote>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus possimus, aut veniam. Ut minus, possimus quisquam cupiditate magnam nisi pariatur..</blockquote>
+                    </div>
+                </div>
+                <div class="col-6 col-md-6 col-lg-4">
+                    <div class="testimonial">
+                        <img src="../../Assets/images/person_3.jpg" alt="Image" class="img-fluid">
+                        <div class="mb-3">
+                            <h3>John Smith</h3>
+                            <span>Co-Founder</span>
+                        </div>
+                        <blockquote>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus possimus, aut veniam. Ut minus, possimus quisquam cupiditate magnam nisi pariatur..</blockquote>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

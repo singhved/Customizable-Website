@@ -1,0 +1,121 @@
+﻿@{ SecondWeb.Models.Context db = new SecondWeb.Models.Context();
+    SecondWeb.Models.Home home = db.Home.FirstOrDefault();
+    System.Data.DataTable dt = SecondWeb.Models.Procs.MyProduct(); }
+<main>
+    <div class="site-hero">
+        <div class="container">
+            <div class="bg-img" style="background-image: url('../../Assets/Job Portal Images/img/th87.jpg'); ">
+                @*<img src="~/Assets/Job Portal Images/img/carousel-1.jpg" />*@
+                <blockquote>
+                    <p>
+                        @if (home != null)
+                        {
+            @home.Quotes}
+                    </p>
+                    <div class="author">
+                        <img src="../../Assets/images/person_1.jpg" alt="Person image">
+                        <cite>Vikash Gupta</cite>
+                    </div>
+                </blockquote>
+                <div class="cta-box">
+                    <h2>
+                        @if (home != null)
+                        {
+            @home.Heading}
+                    </h2>
+                    <p>
+                        @if (home != null)
+                        {
+            @home.Details}
+                    </p>
+                    <a href="#" class="contact-now">Hire Us Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="site-section">
+        <div class="container">
+            <div class="row">
+                @for (int i = 0; i < dt.Rows.Count; i++)
+                {
+    <div class="col-6 col-md-6 col-lg-4">
+        <a class="service">
+            <img src="../../Assets/images/flaticon/svg/001.svg" alt="Image" class="img-fluid">
+            <h3>@dt.Rows[i]["Name"].ToString()</h3>
+            <p>@dt.Rows[i]["Details"].ToString() </p>
+            <ul class="list-unstyled services-list">
+                <li>@dt.Rows[i]["Field"].ToString()</li>
+            </ul>
+        </a>
+    </div>}
+            </div>
+        </div>
+    </div>
+
+    <div class="site-section">
+        <div class="container">
+            <div class="half d-md-flex d-block align-items-stretch">
+                <a href="single.html" class="img" style="background-image: url('../../Assets/images/download.jpg') ">
+                </a>
+                <div class="half-content align-self-center">
+                    <h3>kMix Design</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus possimus, aut veniam. Ut minus, possimus quisquam cupiditate magnam nisi pariatur..</p>
+                    <p>
+                        <strong>Client:</strong> JUVINLE Corp. <br>
+                        <strong>Date:</strong> 2020
+                    </p>
+                    <a href="single.html">View Case Study</a>
+                </div>
+            </div>
+            <div class="half d-md-flex align-items-stretch" style=" margin-top: -50px;">
+                <a href="single.html" class="img order-md-2" style="background-image: url('../../Assets/images/download (1).jpg')">
+                </a>
+                <div class="half-content align-self-center">
+                    <h3>Dieter Rams</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus possimus, aut veniam. Ut minus, possimus quisquam cupiditate magnam nisi pariatur..</p>
+                    <p>
+                        <strong>Client:</strong> XYZ Inc. <br>
+                        <strong>Date:</strong> 2019
+                    </p>
+                    <a href="single.html">View Case Study</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="site-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-6 col-md-6 col-lg-4">
+                    <div class="testimonial">
+                        <img src="../../Assets/images/person_1.jpg" alt="Image" class="img-fluid">
+                        <div class="mb-3">
+                            <h3>Steve Jobs</h3>
+                            <span>Co-Founder</span>
+                        </div>
+                        <blockquote>&ldquo;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus possimus, aut veniam. Ut minus, possimus quisquam cupiditate magnam nisi pariatur..&rdquo;</blockquote>
+                    </div>
+                </div>
+                <div class="col-6 col-md-6 col-lg-4">
+                    <div class="testimonial">
+                        <img src="../../Assets/images/person_2.jpg" alt="Image" class="img-fluid">
+                        <div class="mb-3">
+                            <h3>John Doe</h3>
+                            <span>Co-Founder</span>
+                        </div>
+                        <blockquote>&ldquo;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus possimus, aut veniam. Ut minus, possimus quisquam cupiditate magnam nisi pariatur..&rdquo;</blockquote>
+                    </div>
+                </div>
+                <div class="col-6 col-md-6 col-lg-4">
+                    <div class="testimonial">
+                        <img src="../../Assets/images/person_3.jpg" alt="Image" class="img-fluid">
+                        <div class="mb-3">
+                            <h3>John Smith</h3>
+                            <span>Co-Founder</span>
+                        </div>
+                        <blockquote>&ldquo;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus possimus, aut veniam. Ut minus, possimus quisquam cupiditate magnam nisi pariatur..&rdquo;</blockquote>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

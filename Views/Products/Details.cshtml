@@ -1,0 +1,45 @@
+﻿@model SecondWeb.Models.Product
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/AdminPanel.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>MyProduct</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Details)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Details)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Field)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Field)
+        </dd>
+    </dl>
+</div>
+<div class="row">
+    <div class="col-sm-2">
+        <div class="btn-group">
+            <a type="button" href="/Products/Edit/@Model.id" class="btn btn-primary">Edit</a>
+            <a type="button" href="/Products/Index" class="btn btn-primary">Back to list!</a>
+        </div>
+    </div>
+</div>

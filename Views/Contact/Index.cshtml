@@ -1,0 +1,116 @@
+﻿@{
+    SecondWeb.Models.Context db = new SecondWeb.Models.Context();
+    SecondWeb.Models.ContactUs contactUs = db.ContactUs.FirstOrDefault();
+    db.Dispose();
+}
+<main>
+    <div class="heading">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <h1>Get In Touch</h1>
+                    <p>
+                        @if (contactUs != null)
+                        {
+                            @contactUs.GetInTouch;
+                        }
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="site-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-lg-7 mb-5">
+                    <form action="#" class="contact-form">
+                        <div class="row form-group">
+                            <div class="col-md-12 mb-3 mb-md-0">
+                                <label class="font-weight-bold" for="fullname">Full Name</label>
+                                <input type="text" id="fullname" class="form-control" placeholder="Full Name">
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-md-12">
+                                <label class="font-weight-bold" for="email">Email</label>
+                                <input type="email" id="email" class="form-control" placeholder="Email Address">
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-md-12">
+                                <label class="font-weight-bold" for="email">Subject</label>
+                                <input type="text" id="subject" class="form-control" placeholder="Enter Subject">
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-md-12">
+                                <label class="font-weight-bold" for="message">Message</label>
+                                <input type="text" name="message" id="message" class="form-control" placeholder="Say hello to us" />
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-md-12">
+                                <button type="submit" onclick="SendMessage()" class="btn btn-primary py-2 px-4">Send Message</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-lg-4 ml-auto">
+                    <div class="p-4 mb-3 bg-white">
+                        <h3 class="h5 text-black mb-3">Contact Info</h3>
+                        <p class="mb-0 font-weight-bold text-black">Address</p>
+                        <p class="mb-4 text-black">
+                            @if (contactUs != null)
+                            {
+                            <p>@contactUs.Address</p>}
+                            <p class="mb-0 font-weight-bold text-black">Phone</p>
+                            <p class="mb-4">
+                                <a href="#">
+                                    @if (contactUs != null)
+                                    {
+                                        <p>@contactUs.Phone</p>}
+                                </a>
+                            </p>
+                            <p class="mb-0 font-weight-bold text-black">Email Address</p>
+                            <p class="mb-0">
+                                <a href="#">
+                                    @if (contactUs != null)
+                                    {
+                                        <p>@contactUs.Email</p>
+                                    }
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function SendMessage() {
+            debugger;
+            var name = $('#fullname').val();
+            var email = $('#email').val();
+            var subject = $('#subject').val();
+            var message = $('#message').val();
+            if (name == '') {
+                alert('Fill the Name')
+            }
+            else if (email == '') {
+                alert('Fill the Email')
+            }
+            else if (subject == '') {
+                alert('Fill the Subject')
+            }
+            else if (message == '') {
+                alert('Write Some Messages')
+            }
+            else {
+                $.get('/Contact/ContactDetail', { FullName: name, MM: message, Email: email, Subjects: subject }, function (data) {
+
+                });
+
+            }
+        }
+    </script>

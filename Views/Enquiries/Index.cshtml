@@ -1,0 +1,109 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminPanel.cshtml";
+    System.Data.DataTable dt = SecondWeb.Models.Procs.Enquiries();
+
+
+}
+<div class="row">
+    <div class="col-sm-3">
+        <div class="form-group">
+            <input type="text" class="form-control" id="Name" placeholder="Type anything...." style=" margin-bottom: 5px;" />
+        </div>
+    </div>
+    <div class="col-sm-2 float-end">
+        <button type="button" id="data" onclick="Search()" class="btn btn-outline-primary">Search</button>
+    </div>
+</div>
+<table>
+    <thead style=" background-color:  aliceblue;">
+        <tr>
+            <th>Sr/No.  </th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Subjects</th>
+            <th>Messages</th>
+        </tr>
+    </thead>
+    <tbody id="TBody">
+        @for (int i = 0; i < dt.Rows.Count; i++)
+        {
+            <tr>
+                <td st>@(i+1).</td>
+                <td>@dt.Rows[i]["FullName"].ToString()</td>
+                <td class="text-primary" onclick="ModalBtn('@dt.Rows[i]["FullName"].ToString()')" style="cursor:pointer">@dt.Rows[i]["Email"].ToString()</td>
+                <td>@dt.Rows[i]["Subjects"].ToString()</td>
+                <td>@dt.Rows[i]["Messages"].ToString()</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+</style>
+
+<div class="modal fade" id="myModal" role="dialog" dsp>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="padding: 10px 20px;background-color: aliceblue;">
+                <h4 class="modal-title">Write mail to <span id="Pname"></span></h4>
+                <button type="button" class="btn CloseBtn" style="padding:0;"><span style="font-size: 25px; ">&times;</span></button>
+            </div>
+            <div class="modal-body" id="ModalBody">
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    function ModalBtn(name) {
+        $('#myModal').modal('show');
+        $('#Pname').html(name);
+        $('#ModalBody').html(' <p class="text-center text-primary mt-4 mb-4"><span class="spinner-border"></span></p>');
+        $.get('/Enquiries/MailBody', function (data) {
+            $('#ModalBody').html(data);
+        });
+    }
+    $(document).on('click', '.CloseBtn', function () {
+        $('#myModal').modal('hide');
+        $('#ModalBody').html('');
+    });
+
+    function SendMail() {
+        var sub = $('#Subject').val();
+        var cont = $('#content').val();
+        if (sub == '') {
+            $('#Mymsg').html('<span class="text-danger">Enter Subject.</span>');
+            $('#Subject').focus();
+        }
+        else if (cont == '') {
+            $('#Mymsg').html('<span class="text-danger">Enter Content.</span>');
+            $('#content').focus();
+        }
+        else {
+            $('#Mymsg').html('<span class="text-success">Mail Sent.</span>');
+            $('#SendBtn').hide();
+        }
+    }
+
+
+    function Search() {
+        var FullName = $('#Name').val();
+        $.get('/Enquiries/SearchData', { FullName: FullName }, function (data) {
+            $('#TBody').html(data);
+        });
+    }
+
+</script>

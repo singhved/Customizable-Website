@@ -1,0 +1,46 @@
+﻿@*#f1f1f1*@
+@{ SecondWeb.Models.Context db = new SecondWeb.Models.Context();
+    SecondWeb.Models.Services services = db.Services.FirstOrDefault();
+    System.Data.DataTable dt = SecondWeb.Models.Procs.MyServices();
+    SecondWeb.Models.Product product = db.Product.FirstOrDefault();
+    System.Data.DataTable dtt = SecondWeb.Models.Procs.MyProduct();
+    db.Dispose(); }
+
+<main>
+    <div class="heading" style="margin-top: 60px; ">
+        <div class="container" style="background-image: url('../../Assets/images/hero_1.jpg'); color: aliceblue;">
+            <div class="row">
+                @for (int i = 0; i < dt.Rows.Count; i++)
+                {<div class="col-lg-8">
+                        <div class="bg-img">
+                            <h3    style="color: black;" >
+                               @dt.Rows[i]["Name"].ToString()
+                        </h3>
+                        <p>
+                            @dt.Rows[i]["Details"].ToString()
+                    </p>
+                </div>
+            </div>      }
+
+            </div>
+        </div>
+    </div>
+    <div class="site-section">
+        <div class="container">
+            <div class="row">
+                @for (int i = 0; i < dtt.Rows.Count; i++)
+                {
+    <div class="col-6 col-md-6 col-lg-4">
+        <a class="service">
+            <img src="../../Assets/images/flaticon/svg/001.svg" alt="Image" class="img-fluid">
+            <h3>@dtt.Rows[i]["Name"].ToString()</h3>
+            <p>@dtt.Rows[i]["Details"].ToString() </p>
+            <ul class="list-unstyled services-list">
+                <li>@dtt.Rows[i]["Field"].ToString()</li>
+            </ul>
+        </a>
+    </div>}
+            </div>
+        </div>
+    </div>
+</main>

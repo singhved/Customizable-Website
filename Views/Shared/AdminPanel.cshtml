@@ -1,0 +1,175 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+
+    <meta charset="utf-8" />
+    <title>Admin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+    <meta content="Themesbrand" name="author" />
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="../../AdminAssets/assets/images/favicon.ico">
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    <!-- plugin css -->
+    <link href="../../AdminAssets/assets/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css" />
+
+    <!-- preloader css -->
+    <link rel="stylesheet" href="../../AdminAssets/assets/css/preloader.min.css" type="text/css" />
+
+    <!-- Bootstrap Css -->
+    <link href="../../AdminAssets/assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
+    <!-- Icons Css -->
+    <link href="../../AdminAssets/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <!-- App Css-->
+    <link href="../../AdminAssets/assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <style>
+        .modal{
+            top:70px !important;
+        }
+    </style>
+</head>
+<body>
+    <div id="layout-wrapper">
+        <header id="page-topbar">
+            <div class="navbar-header" style="background-color: aliceblue;">
+                <div class="d-flex">
+                    <!-- LOGO -->
+                    <div class="navbar-brand-box " style="background-color: aliceblue;">
+                        <a href="/Homes/Index" class="logo logo-dark">
+                            <span class="logo-sm">
+                                <img src="../../AdminAssets/assets/images/logo-sm.svg" alt="" height="24">
+                            </span>
+                            <span class="logo-lg">
+                                <img src="../../AdminAssets/assets/images/logo-sm.svg" alt="" height="24"> <span class="logo-txt">Minia</span>
+                            </span>
+                        </a>
+
+                        <a href="/Homes/Index" class="logo logo-light">
+                            <span class="logo-sm">
+                                <img src="../../AdminAssets/assets/images/logo-sm.svg" alt="" height="24">
+                            </span>
+                            <span class="logo-lg">
+                                <img src="../../AdminAssets/assets/images/logo-sm.svg" alt="" height="24"> <span class="logo-txt">Minia</span>
+                            </span>
+                        </a>
+                    </div>
+
+                    <button type="button" class="btn btn-sm px-3 font-size-16 header-item" id="vertical-menu-btn">
+                        <i class="fa fa-fw fa-bars"></i>
+                    </button>
+
+                    <!-- App Search-->
+                    @*<form class="app-search d-none d-lg-block">
+                            <div class="position-relative">
+                                <input type="text" class="form-control" placeholder="Search...">
+                                <button class="btn btn-primary" type="button"><i class="bx bx-search-alt align-middle"></i></button>
+                            </div>
+                        </form>*@
+                </div>
+
+                <div class="d-flex">
+                    <div class="dropdown d-inline-block">
+                        <button type="button" class="btn header-item topbar-light bg-light-subtle border-start border-end" id="page-header-user-dropdown"
+                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img class="rounded-circle header-profile-user" src="../../AdminAssets/assets/images/users/avatar-1.jpg"
+                                 alt="Header Avatar">
+                            <span class="d-none d-xl-inline-block ms-1 fw-medium">Shawn L.</span>
+                            <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-end">
+                            <!-- item-->
+                            <a class="dropdown-item" href="apps-contacts-profile.html"><i class="mdi mdi-face-man font-size-16 align-middle me-1"></i> Profile</a>
+                            <a class="dropdown-item" href="auth-lock-screen.html"><i class="mdi mdi-lock font-size-16 align-middle me-1"></i> Lock Screen</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="auth-logout.html"><i class="mdi mdi-logout font-size-16 align-middle me-1"></i> Logout</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </header>
+
+        <div class="vertical-menu" style="background-color: aliceblue;">
+
+            <div data-simplebar class="h-100">
+
+                <!--- Sidemenu -->
+                <div id="sidebar-menu">
+                    <!-- Left Menu Start -->
+                    <ul class="metismenu list-unstyled" id="side-menu">
+                        <li class="menu-title" data-key="t-menu">Menu</li>
+
+                        <li>
+                            <a href="/AboutUs/Index">
+                                <i class="fa fa-home" style=" color: blueviolet;"></i>
+                                <span data-key="t-dashboard">AboutUs</span>
+                            </a>
+                            <a href="/ContactUs/Index">
+                                <i class="fa fa-address-book" style=" color: blueviolet;"></i>
+                                <span data-key="t-dashboard">Contacts</span>
+                            </a>
+                            <a href="/OurPortfolios/Index">
+                                <i class="fa fa-briefcase" style=" color: blueviolet;"></i>
+                                <span data-key="t-dashboard">Portfolio</span>
+                            </a>
+                            <a href="/Products/Index">
+                                <i class="fa fa-project-diagram" style=" color: blueviolet;"></i>
+                                <span data-key="t-dashboard">Products</span>
+                            </a>
+                            <a href="/TheTeams/Index">
+                                <i class="fa fa-user" style=" color: blueviolet;"></i>
+                                <span data-key="t-dashboard">The Team</span>
+                            </a>
+                            <a href="/Enquiries/Index">
+                                <i class="fa fa-question-circle" style=" color: blueviolet;"></i>
+                                <span data-key="t-dashboard">Enquiries</span>
+                            </a>
+                            <a href="/Services1/Index">
+                                <i class="fa fa-wrench" style=" color: blueviolet;"></i>
+                                <span data-key="t-dashboard">Services</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+                <!-- Sidebar -->
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="page-content">
+                <div class="container-fluid">
+
+                    @RenderBody()
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="rightbar-overlay"></div>
+
+    <!-- JAVASCRIPT -->
+    <script src="../../AdminAssets/assets/libs/jquery/jquery.min.js"></script>
+    <script src="../../AdminAssets/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../../AdminAssets/assets/libs/metismenu/metisMenu.min.js"></script>
+    <script src="../../AdminAssets/assets/libs/simplebar/simplebar.min.js"></script>
+    <script src="../../AdminAssets/assets/libs/node-waves/waves.min.js"></script>
+    <script src="../../AdminAssets/assets/libs/feather-icons/feather.min.js"></script>
+    <!-- pace js -->
+    <script src="../../AdminAssets/assets/libs/pace-js/pace.min.js"></script>
+
+    <!-- apexcharts -->
+    <script src="../../AdminAssets/assets/libs/apexcharts/apexcharts.min.js"></script>
+
+    <!-- Plugins js-->
+    <script src="../../AdminAssets/assets/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js"></script>
+    <script src="../../AdminAssets/assets/libs/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js"></script>
+    <!-- dashboard init -->
+    <script src="../../AdminAssets/assets/js/pages/dashboard.init.js"></script>
+    <script src="../../AdminAssets/assets/js/app.js"></script>
+</body>
+</html>

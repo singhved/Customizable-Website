@@ -1,0 +1,51 @@
+﻿@model IEnumerable<SecondWeb.Models.OurPortfolio>
+@{ 
+    Layout = "~/Views/Shared/AdminPanel.cshtml";
+}
+<h2>OurPortfolio</h2>
+<h5>Index</h5>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Details)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Heading)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Client)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Details)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Heading)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Client)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.id })
+            </td>
+        </tr>
+    }
+
+</table>

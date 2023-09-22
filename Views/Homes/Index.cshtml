@@ -1,0 +1,52 @@
+﻿@model IEnumerable<SecondWeb.Models.Home>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminPanel.cshtml";
+}
+<h2>Home</h2>
+<h5>Index</h5>
+
+<p>
+    @*@Html.ActionLink("Create New", "Create")*@
+    <a class="btn btn-primary" href="/Homes/Create">Create New</a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Heading)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Details)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quotes)
+        </th>
+        <th>
+            Action
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Heading)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Details)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Quotes)
+    </td>
+    <td>
+        @*@Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+        @Html.ActionLink("Details", "Details", new { id = item.id }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.id })*@
+        <a type="button" href="/Homes/Edit/@item.id" class="btn btn-primary"><i class="fa fa-edit"></i></a>
+        <a type="button" href="/Homes/Details/@item.id" class="btn btn-warning"><i class="fa fa-eye"></i></a>
+        <a type="button" href="/Homes/Delete/@item.id" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+    </td>
+</tr>
+}
+
+</table>

@@ -1,0 +1,47 @@
+﻿@model IEnumerable<SecondWeb.Models.AboutUs>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminPanel.cshtml";
+    SecondWeb.Models.Context db = new SecondWeb.Models.Context();
+    int about = db.AboutUs.Count();
+    db.Dispose();
+}
+<h2>AboutUs</h2>
+<h5>Index</h5>
+@if (about == 0)
+{
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Heading)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Details)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Heading)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Details)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.id })
+            </td>
+        </tr>
+    }
+
+</table>
